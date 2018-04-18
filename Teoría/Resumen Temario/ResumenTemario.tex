@@ -653,7 +653,7 @@ De entre las candidatas tenemos que elegir una como principal, denominada \textb
 \end{tabular}
 \caption{Comparativa de modelos.}
 \end{figure}
-
+\newpage
 \section{Tema 4. El modelo relacional.}
 
 
@@ -712,22 +712,72 @@ La tabla es la estructura lógica de un sistema relacional. A nivel físico, el 
 
 \subsection{Propiedades de la estructura de datos relacional}
 
+\begin{definition}[Condición de normalización]
+	Todos los valores de los atributos de una relación son no atómicos (no estructurados). Cuando una relación cumple esta condición, se dice que está en \emph{primera forma normal}.
+\end{definition}
 
+La condición de normalización trae varias consecuencias:
+\begin{itemize}
+	\item No hay valores de tipo conjunto, registro ni tablas.
+	\item No hay tuplas duplicadas.
+	\item No hay orden en las filas ni en los atributos (se accede por nombre de atributo y valor).
+	\item Varias instancias representan la misma relación.
+\end{itemize}
 
+Sin embargo, trae un problema: todas las representaciones son extensivas, por lo que no se puede representar información del tipo "el valor de un atributo en una tupla es igual al de otro atributo en otra tupla".
 
 \subsection{Notación}
+
+\begin{itemize}
+	\item \textbf{Relación}. R,S,T,...
+	\item \textbf{Atributos}. A,B,...
+	\item \textbf{Esquema de relación}. R[$A_1,A_2,...,A_n$].
+	\item \textbf{Instancia de relación R}. r.
+	\item \textbf{Tuplas de una instancia}. $x_1,x_2,...,x_n \in r$.
+	\item \textbf{Valor de un atributo $A_i$ en una tupla $x_j$}. $x_j[A_j]$ ó $A_{ij}$.
+	\item Si no conocemos el valor de un atributo en una tupla, se le asigna un valor \textbf{nulo}.
+\end{itemize}
 
 
 \subsection{Restricciones o reglas de integridad}
 
+Hay varios tipos:
+
+\begin{itemize}
+	\item \textbf{Asociada a tablas}. Ejemplos: $0 \leq edad \leq 100$, $creditos > 0$,...
+	\item \textbf{Asociada a bases de datos}. Ejemplos: $imparte.NRP \in profesor.NRP$ , $cod_asig \neq nulo$.
+\end{itemize}
 
 
+Cuando hay más de una clave candidata en una relación, tenemos que elegir una, que será denominada \textbf{clave primaria}.
+
+\begin{definition}[Integridad de entidad]
+	No se debe permitir que una entidad sea definida en la base de datos si no tiene una información completa de sus atributos clave, es decir, la clave primaria (o una parte de ella) no puede ser nula.
+\end{definition}
 
 
+\begin{definition}[Clave externa]
+	Conjunto de atributos de una relación que es clave en otra (o incluso en la misma) relación. Es decir, es un conjunto de atributos de una relación cuyos valores coinciden con valores de la clave primaria de las tuplas de otra relación.
+\end{definition}
 
 
+\begin{definition}[Integridad referencial]
+	Todos los valores no nulos de una clave externa deben referenciar valores reales de la clave referenciada en la otra relación.
+\end{definition}
 
 
+El SGBD debe encargarse de mantener las siguientes restricciones:
+
+\begin{enumerate}
+	\item \textbf{Unicidad de clave primaria y claves candidatas}. Ante inserciones y actualizaciónes, el SGBD debe rechazar los valores que ya existan en la base de datos en las claves primarias y candidatas.
+	\item\ \textbf{Restricción de integridad de identidad}. Ante inserciones y actualizaciones, se deben rechazar las modificaciones que vulneren la unicidad de la clave primaria o que le asignen algún valor nulo.
+	\item \textbf{Integridad referencial}
+		\begin{enumerate}
+			\item En la \emph{inserción} se debe rechazar la tupla insertada si el valor de su clave externa no concuerda en la relación referenciada o si el valor es nulo y el diseño no lo permite.
+			\item En la \emph{actualización}, además de verificar todo lo anterior, se debe actualizar la clave primaria de la relación referenciada.
+			\item Si se \emph{borra} la clave primaria en la relación referenciada se deben borrar en cadena todas las tuplas que la referencian o poner su clave externa a valor nulo.
+		\end{enumerate}
+\end{enumerate}
 
 
 
