@@ -11,6 +11,10 @@
 *.cb
 *.cb2
 
+# minted
+_minted*
+*.pyg
+
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
