@@ -104,7 +104,7 @@
 
 \subsection{Concepto intuitivo de bases de datos}
 
-Prácticamente todas las empresas necesitan aplicacioens que gestionen información a la que se accederá desde distintos puntos. Si estos datos pertenecen a las aplicaciones, hay tres problemas principales:
+Prácticamente todas las empresas necesitan aplicaciones que gestionen información a la que se accederá desde distintos puntos. Si estos datos pertenecen a las aplicaciones, hay tres problemas principales:
 \begin{itemize}
 	\item \textbf{Redundancia}. La información se repite en varios sitios a la vez.
 	\item \textbf{Inconsistencia}. ¿Cuáles son los datos más actualizados?
@@ -169,7 +169,7 @@ Una base de datos involucra:
 				\item Base de datos normal.
 				\item Base de datos distribuida.
 			\end{itemize}
-		\item Software \textbf{DBMS} (DataBase Management System). SOn programas par describir las estructuras y gestionar la información de la base de datos.
+		\item Software \textbf{DBMS} (DataBase Management System). Son programas par describir las estructuras y gestionar la información de la base de datos.
 		\item \textbf{Usuarios}
 			\begin{itemize}
 				\item Usuario final.
@@ -225,10 +225,10 @@ Ejemplos de dato operativo:
 \end{itemize}
 
 \begin{definition}[Independencia lógica]
-	Cada aplicación debe poder organizar lso datos según sus propios esquemas y acceder a los datos que le son necesarios y le conciernen (vistas de usuario).
+	Cada aplicación debe poder organizar los datos según sus propios esquemas y acceder a los datos que le son necesarios y le conciernen (vistas de usuario).
 \end{definition}
 
-La independecia lógica provoca varias mejoras:
+La independencia lógica provoca varias mejoras:
 \begin{itemize}
 	\item Aumento de seguridad y fiabilidad.
 	\item Menos problemas para las aplicaciones.
@@ -267,7 +267,7 @@ En cuanto al sistema:
 	\item Control \textbf{centralizado}.
 	\item Criterios de \textbf{uniformización}.
 	\item Generación de \textbf{nuevas aplicaciones}.
-	\item \textbf{Equilibrio} entre requierimientos conflictivos.
+	\item \textbf{Equilibrio} entre requerimientos conflictivos.
 \end{itemize}
 
 \section{Tema 2. Arquitectura de un sistema gestor de bases de datos.}
@@ -282,7 +282,7 @@ Un SGBD se organiza en niveles por varios motivos:
 
 La división se realiza en tres niveles:
 
-\begin{definition}[NIvel interno]
+\begin{definition}[Nivel interno]
 Constituye la representación de la base de datos más cercana a la estructura de almacenamiento físico. Por tanto, es la capa donde se establece la forma en que se implantan las estructuras de datos que organizan los niveles superiores.
 \end{definition}
 
@@ -364,15 +364,15 @@ Es un conjunto de normas que establece cómo se definen los datos de un nivel en
 \end{definition}
 Es un mecanismo fundamental para establecer la independencia tanto física como lógica.
 
-\begin{definition}[Transpormación conceptual/interna]
+\begin{definition}[Transformación conceptual/interna]
 Define cómo se organizan las entidades lógicas del nivel conceptual en términos de registros y campos almacenados en el nivel interno.
 \end{definition}
 
-\begin{definition}[Transpormación externa/conceptual]
+\begin{definition}[Transformación externa/conceptual]
 Describe un esquema externo en términos del esquema conceptual subyacente.
 \end{definition}
 
-Algunos SGBDs permiten la descripción de esquemas externos en términos de otros esqumas externos (transpormación externa/externa).
+Algunos SGBDs permiten la descripción de esquemas externos en términos de otros esquemas externos (transformación externa/externa).
 
 \begin{figure}[H]
 \centering
@@ -433,7 +433,7 @@ Las principales alternativas para su implementación son PL de Oracle o la ejecu
 Inicialmente, el esquema de la base de datos era centralizado:
 \begin{itemize}
 	\item Toda la carga de gestión y procesamiento de la información recaía en servidores centrales.
-	\item El acceso se relizaba mediante terminales.
+	\item El acceso se realizaba mediante terminales.
 	\item En el ordenador principal se alojaban el SGBD y los programas de aplicación.
 \end{itemize}
 
@@ -491,7 +491,7 @@ Su principales inconvenientes son que aumenta la complejidad a la hora de config
 \newpage
 \subsection{El administrador de la base de datos (DBA)}
 
-El DBA es uina figura muy importancia en el contexto de los SGBD, ya que:
+El DBA es una figura muy importancia en el contexto de los SGBD, ya que:
 \begin{itemize}
 	\item Elabora el esquema conceptual, analizando las necesidades de información de la empresa, identificando los datos operativos, elaborando el esquema lógico e implantando el esquema conceptual.
 	\item Decide la estructura de almacenamiento en el nivel interno.
@@ -572,7 +572,7 @@ Sus principales inconvenientes son:
 
 \begin{itemize}
 	\item Almacenar árboles es complejo (mantenimiento de punteros y variedad de tipos de registros).
-	\item El DML es difífil de usar e implementar.
+	\item El DML es difícil de usar e implementar.
 	\item Dependencia existencial obligatoria de los registros secundarios con respecto a los de tipo raíz (no se puede insertar un registro secundario sin uno raíz donde \emph{engancharlo}).
 	\item Redundancia al plasmar relaciones muchos a muchos.
 \end{itemize}
@@ -603,7 +603,7 @@ Sin embargo, la existencia de enlaces entre registros hace que las operaciones d
 \subsection{Modelo relacional}
 
 
-Organiza y representa los datos en forma de tablas o relaciones. Una base de datos relacional es una colección de tables cada una de las cuales tiene un nombre único.
+Organiza y representa los datos en forma de tablas o relaciones. Una base de datos relacional es una colección de tablas cada una de las cuales tiene un nombre único.
 
 \begin{figure}[H]
 \centering
@@ -616,7 +616,7 @@ Organiza y representa los datos en forma de tablas o relaciones. Una base de dat
 \end{definition}
 
 \begin{definition}[Instancia o estado de una base de datos]
-	Colección de isntancias de relaciones que verifican las restricciones de integridad.
+	Colección de instancias de relaciones que verifican las restricciones de integridad.
 \end{definition}
 
 \begin{definition}[Base de datos relacional]
@@ -769,7 +769,7 @@ Cuando hay más de una clave candidata en una relación, tenemos que elegir una,
 El SGBD debe encargarse de mantener las siguientes restricciones:
 
 \begin{enumerate}
-	\item \textbf{Unicidad de clave primaria y claves candidatas}. Ante inserciones y actualizaciónes, el SGBD debe rechazar los valores que ya existan en la base de datos en las claves primarias y candidatas.
+	\item \textbf{Unicidad de clave primaria y claves candidatas}. Ante inserciones y actualizaciones, el SGBD debe rechazar los valores que ya existan en la base de datos en las claves primarias y candidatas.
 	\item\ \textbf{Restricción de integridad de identidad}. Ante inserciones y actualizaciones, se deben rechazar las modificaciones que vulneren la unicidad de la clave primaria o que le asignen algún valor nulo.
 	\item \textbf{Integridad referencial}
 		\begin{enumerate}
@@ -778,8 +778,6 @@ El SGBD debe encargarse de mantener las siguientes restricciones:
 			\item Si se \emph{borra} la clave primaria en la relación referenciada se deben borrar en cadena todas las tuplas que la referencian o poner su clave externa a valor nulo.
 		\end{enumerate}
 \end{enumerate}
-
-
 
 
 \end{document}
